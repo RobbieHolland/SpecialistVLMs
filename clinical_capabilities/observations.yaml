@@ -1,0 +1,16 @@
+schema: |
+  Biomarkers indicative of age-related macular degeneration (AMD). You do not have to use their capitalized names. Biomarker location can be outer, inner, temporal, nasal, fovea or left, right, center. Assume biomarkers are normal or absent, unless implied, by default:
+  - Drusen (present/absent, size: small/medium/large, number, confluent or not, location)
+  - Retinal pigment epithelium (RPE) state (normal/degeneration/atrophy, normal by default, cases of hypertransmission imply RPE atrophy by default, location)
+  - Pigment epithelial detachment (PED) (present/absent, type: serous/drusenoid/fibrovascular, size: small/medium/large, location)
+  - RPE elevation (presence of PED or drusen (i.e. any retinal pigment epithelial detachments) both directly imply RPE elevation by default, present/absent, also called disruption, location)
+  - Shallow irregular RPE elevation (SIRE) (present/absent, size of RPE covered, double-layer sign or not, location)
+  - Hyperreflective foci (HRF) (present/absent, number, location)
+  - Hypertransmission (present/absent, severity: mild/moderate/significant, optional types: cRORA/iRORA which stand for incomplete/complete retinal pigment epithelium and outer retinal atrophy, hypertransmission directly implies RPE atrophy, location)
+  - Fibrosis (present/absent, location)
+  - Subretinal hyperreflective material (SHRM) (present/absent, amount, location)
+  - Subretinal fluid (SRF) (present/absent, volume: small/moderate/large, location)
+  - Intraretinal fluid (IRF) (present/absent, volume: small/moderate/large, location)
+  Other attributes:
+  - Pathology unrelated to AMD (present/absent)
+  - Image quality (good by default, poor quality can prevent detailed analysis)

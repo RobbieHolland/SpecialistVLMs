@@ -1,0 +1,8 @@
+name: 'retfound'
+feature_dim: 4096
+projection_dim: 1024
+p_tokens: Null
+unfrozen_layers: []
+
+concatenate_tokens: False
+average_tokens: False

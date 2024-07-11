@@ -1,0 +1,4 @@
+name: 'chatgpt-3.5'
+temperature: 0.8
+endpoint: 'gpt-3.5-turbo-16k'
+openai_api_key: ${paths.openai_api_key}

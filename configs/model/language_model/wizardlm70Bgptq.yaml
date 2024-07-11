@@ -1,0 +1,7 @@
+path: ${paths.wizardlm_path}
+name: 'WizardLM-70B-GPTQ'
+model_id: 'WizardLM-70B-GPTQ'
+
+prompt:
+  preamble: "A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions."
+  question: "USER: <Question>ASSISTANT: <Answer>"

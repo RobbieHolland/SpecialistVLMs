@@ -1,0 +1,3 @@
+name: 'biomedclip'
+feature_dim: 768
+projection_dim: 512

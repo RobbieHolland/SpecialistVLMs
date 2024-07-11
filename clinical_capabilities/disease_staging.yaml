@@ -1,0 +1,9 @@
+schema: |
+  Guidelines for determining the overall age-related macular degeneration (AMD) stage from the observed biomarkers, described in increasing order of severity:
+  1. Healthy/no AMD: Patients with normal appearance and signs of normal ageing, with no signs of AMD, are considered healthy
+  2. Early AMD: Presence of small to medium sized drusen indicate that the patient has at least early AMD
+  3. Intermediate AMD: Large drusen, serous or drusenoid type PEDs, or large RPE irregularity indicate the patient has intermediate AMD. Small amounts of iRORA hypertransmission, or abnormalities caused by traction or vitreous issues, can also indicate intermediate AMD
+  4. Late dry AMD: Hypertransmission, especially the cRORA type, is strong evidence of retinal atrophy, called 'late dry' AMD or 'geographic atrophy'. Also, thinning of the retinal layers, including the RPE, indicate atrophy.
+  5. Late wet (inactive) AMD: The presence of any amount of subretinal hyperreflective material (SHRM) indicates that the patient has some form of late wet AMD, as does any scarring, fibrosis, or a fibrovascular PED. In the absence of retinal fluid, this indicates the patient has 'inactive late wet' AMD (which can often be a sign of 'previously treated' wet AMD).
+  6. Late wet AMD: The presence of any amount of subretinal fluid or intraretinal fluid (i.e. exudation), or cysts, are strong evidence of neovascularisation, which strongly indicates the patient has 'active late wet' AMD (also sometimes referred to simply as 'late wet AMD').
+  - Overall stage: If multiple AMD stages can be deduced from the image, the most advanced one takes precedence in the overall classification of the patient's disease stage
