@@ -10,6 +10,7 @@ RetinaVLM is a generative vision-language model designed for the management of p
 Creating RetinaVLM by training on curriculum part 1, and then curriculum part 2.
 
 `run/vision_language_pretraining.py -dataset=retina -pretrained_models=new -dataset/task=curriculum_part_1_introduction_to_retina`
+
 `run/vision_language_pretraining.py -dataset=retina -pretrained_models=retinavlm_base_192px -dataset/task=curriculum_part_2_advanced_retinal_specialism`
 
 **Notice:** Models will be accessible from [https://huggingface.co/RobbieHolland/RetinaVLM](https://huggingface.co/RobbieHolland/RetinaVLM) by 12th July 2024.
