@@ -10,7 +10,7 @@ slurm/output/
 slurm/
 wandb/
 *.jpg
-!Figure 1.jpg
+!Figure_1.jpg
 *.png
 *.csv
 *.txt
