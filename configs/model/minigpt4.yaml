@@ -1,0 +1,13 @@
+defaults:
+  - _self_
+  - vision_encoder: halfmedian_resnet
+  - language_model: llama3-8b_instruct
+  - miniformer: none
+
+batch_size: 12
+
+p_tokens: False
+s_tokens: False
+image_patch_position_embedding: False
+
+checkpoint_path: ['RetinaVLM-MiniGPT4/astral-microwave-524', 'last']

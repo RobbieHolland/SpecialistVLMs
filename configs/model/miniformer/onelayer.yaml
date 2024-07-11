@@ -1,0 +1,8 @@
+name: 'one'
+
+dim_feedforward: 1024
+learnable_queries: 32
+nhead: 8
+num_layers: 1
+
+linear_upsample: False

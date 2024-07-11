@@ -1,0 +1,6 @@
+defaults:
+  - _self_
+  - vision_encoder: byol
+
+batch_size: 30
+# vision_encoder: biomedclip

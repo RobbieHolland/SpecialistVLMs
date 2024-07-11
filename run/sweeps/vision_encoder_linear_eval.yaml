@@ -1,0 +1,24 @@
+program: run/vision_encoder_linear_eval.py
+method: grid
+metric:
+  goal: minimize
+  name: test/epoch_mae
+parameters:
+  dataset:
+    distribution: categorical
+    values: ['retina_median', 'retina']
+  model/vision_encoder:
+    distribution: categorical
+    values: ['pretrained_resnet', 'halfmedian_resnet', 'median_resnet']
+    # values: ['retfound']
+  dataset/task:
+    distribution: categorical
+    values: ['late_amd', 'valogmar']
+  
+command:
+  - python3
+  - ${program}
+  - ${args_no_hyphens}
+  - model=minigpt4
+  - model.batch_size=192
+  # - dataset.preload_images=True

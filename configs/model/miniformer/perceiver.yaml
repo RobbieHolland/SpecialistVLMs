@@ -1,0 +1,4 @@
+name: perceiver
+linear_upsample: True
+
+learnable_queries: 50

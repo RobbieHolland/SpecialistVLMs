@@ -1,0 +1,9 @@
+name: 'pretrained_resnet'
+checkpoint: ${paths.vision_encoder_halfmedian_checkpoint}
+feature_dim: 2048
+projection_dim: 2048
+blocks: [3, 4, 6, 3]
+unfrozen_layers: []
+
+concatenate_tokens: False
+average_tokens: False

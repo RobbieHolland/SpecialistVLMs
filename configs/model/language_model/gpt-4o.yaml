@@ -1,0 +1,4 @@
+name: 'gpt-4o-2024-05-13'
+temperature: 0.8
+endpoint: 'gpt-4o-2024-05-13'
+openai_api_key: ${paths.openai_api_key}

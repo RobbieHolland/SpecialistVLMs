@@ -1,0 +1,7 @@
+name: 'multi'
+dim_feedforward: 1024
+learnable_queries: 32
+nhead: 8
+num_layers: 3
+
+linear_upsample: False

@@ -1,0 +1,33 @@
+defaults:
+  - _self_
+  - dataset: retina
+  - model: minigpt4
+  - pretrained_models: specialist_v5_192px
+  - paths: paths
+
+wandb_project: 'RetinaVLM-MiniGPT4'
+wandb_mode: online
+
+devices: 1
+
+seed: 1736
+num_workers: 6
+pretrained_model_dir: ${paths.pretrained_model_dir}
+flamingo_dir: ${paths.flamingo_repo_dir}
+llava_med_dir: ${paths.llava_med_repo_dir}
+llava_med_model_path: ${paths.llava_med_model_path}
+retfound_dir: ${paths.retfound_repo_dir}
+octlatent_dir: ${paths.octlatent_repo_dir}
+llama_path: ${paths.flamingo_llama_path}
+images_for_figures_dir: ${paths.images_for_figures_dir}
+
+specialist_description_annotations: ${paths.specialist_reports}
+specialist_tabular_annotations: ${paths.tabular_variables}
+tabular_biomarker_variables: ${paths.tabular_biomarker_variables}
+
+mock: False
+job_id: Null
+
+results_path: evaluation/results/closed_ended/
+figure_path: evaluation/figures/
+manual_predictions_path: ${path.manual_predictions_path}
