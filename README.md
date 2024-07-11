@@ -29,7 +29,7 @@ Code for computing visual saliency maps to passages in the RetinaVLM's generated
 
 #### Data availability
 
-Both imaging datasets are currently being curated and maintained by the Vienna Reading Center on behalf of the PINNACLE consortium. The data will be made available to once the PINNACLE study concludes in 2026.
+Both imaging datasets are currently being curated and maintained by the Vienna Reading Center on behalf of the PINNACLE consortium. The data will be made available once the PINNACLE study concludes in 2026.
 
 #### Dependencies
 
