@@ -9,9 +9,11 @@ RetinaVLM is a generative vision-language model designed to assist in the manage
 
 ## Creating Curriculum part 1 and part 2
 
-`run/generate_curriculum_part1.py dataset=retina model/language_model=gpt-4o dataset/task=tabular_annotate `
+To generate curriculum part 1
 
-For curriculum modules `1_advanced_biomarkers_guidelines`, `2_specific_qa`... `10_staging_accuracy`:
+`run/generate_curriculum_part1.py dataset=retina model/language_model=gpt-4o dataset/task=tabular_annotate dataset/task/curriculum=tabular_annotate_rules`
+
+To generate the modules in curriculum part 2: `1_advanced_biomarkers_guidelines`, `2_specific_qa`... `10_staging_accuracy`:
 
 `run/generate_curriculum_part2.py dataset=retina model/language_model=gpt-4o dataset/task=specialist_annotate dataset/task/curriculum=1_advanced_biomarkers_guidelines`
 
