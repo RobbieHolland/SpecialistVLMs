@@ -30,4 +30,6 @@ job_id: Null
 
 results_path: evaluation/results/closed_ended/
 figure_path: evaluation/figures/
-manual_predictions_path: ${path.manual_predictions_path}
+manual_predictions_path: ${paths.manual_predictions_path}
+
+hf_write_token: ${paths.hf_write_token}

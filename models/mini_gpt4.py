@@ -481,7 +481,6 @@ def debug(config):
     print(outputs.loss)
     print(outputs.logits.shape)
 
-
     output_token = outputs[0]
     if output_token[0] == 0:  # the model might output a unknow token <unk> at the beginning. remove it
         output_token = output_token[1:]

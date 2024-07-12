@@ -36,3 +36,4 @@ evaluation/junior_specialist.py
 .nfs*
 .hydra/
 slurm/
+saved_models/
