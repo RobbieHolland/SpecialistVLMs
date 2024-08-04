@@ -1,0 +1,36 @@
+# target: ['TabularAnnotated', 'ImageId', 'Annotation']
+target: ['TabularAnnotated', 'ImageId']
+
+n_images: 30
+max_txt_len: 1000
+
+closed_ended_limit_val_batches: 10
+
+max_new_tokens_cot: 1200
+max_new_tokens_answer: 300
+
+cot: True
+
+all_questions:
+  - name: referral
+    query: |
+      Write an extensive report describing the OCT image and listing any present biomarkers or other observations. Do not provide a disease stage, or referral recommendation yet.
+    query2: |
+      Being seen by a specialist at the Southampton clinic:
+      A. The Southampton clinic requires that patients with any sign of intraretinal fluid, any sign of subretinal fluid, or any sign of cyst(s), MUST be seen by a specialist at the Southampton clinic within the next two weeks.
+      B. The Southampton clinic requires that patients who do not have any sign of intraretinal fluid, any sign of subretinal fluid, or any sign of cyst(s), but do have some biomarkers of early or intermediate AMD, should be seen by a specialist at the Southampton clinic for routine referral.
+      C. The Southampton clinic requires that patients who do not have any sign of intraretinal fluid, any sign of subretinal fluid, or any sign of cyst(s), but do have medium to large drusen, drusenoid PED, hypertransmission or atrophy, should be seen by a specialist at the Southampton clinic for routine referral.
+      D. The Southampton clinic does not need to see patients who have no biomarkers and healthy retinas at all.
+      
+      Southampton specialist visit: Next, tell me if your initial report of the OCT image indicates that the patient should be seen by a specialist at the Southampton clinic within the next two weeks, for routine referral, or not seen at all?
+    preamble: ' These findings indicate that the patient'
+  - name: catastrophic_forget_anecdotal_test
+    query: |
+      What is the capital of England?
+
+validation_tasks: ['SpecialistOther.AMDStage']
+
+specific_tasks:
+  - SpecialistOther
+  - SpecialistReferral
+  # - SpecialistDetection

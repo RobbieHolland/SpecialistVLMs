@@ -1,0 +1,13 @@
+target: ['TabularAnnotated', 'ImageId', 'Annotation']
+llm_qs_as: []
+max_txt_len: 96
+n_images: 30
+
+max_new_tokens_cot: 1200
+max_new_tokens_answer: 300
+
+all_questions:
+  - name: clinical_evaluation_AMD
+    query: Write an extensive report describing the OCT image, noting any biomarkers or abnormalities related to AMD, and their qualities. Also comment on which biomarkers are absent. Finally, based on the image and these findings, your report should estimate the AMD disease stage of the patient. You should not include any patient referral recommendations in your report, but you can comment if they need treatment with anti-vegf.
+  - name: brief_clinical_evaluation_AMD
+    query: Write a brief report describing the OCT image, noting any biomarkers or abnormalities related to AMD, and their qualities. Also comment on which biomarkers are absent. Finally, based on the image and these findings, your report should estimate the AMD disease stage of the patient.

@@ -1,0 +1,31 @@
+output_column_name: 'full_report_writing_guidelines'
+
+annotation_prompt: |
+  I am constructing a dataset to train a model to answer questions based solely on OCT images.
+
+  Below are guidelines outlining what can appear in an OCT image:
+  <ObservationGuidelines>
+  <DiseaseStagingGuidelines>
+  <PatientReferralGuidelines>
+
+  However, the image the model is being asked about is characterised by the following description:
+  DESCRIPTION OF IMAGE: "<Variables>"
+
+  Task: Write 20 requests for reports that ask the model reason all the way from the observable biomarkers, linking these to the most advanced disease stage, and finally to a referral recommendation for the patient.
+
+  Ensure the format is:
+    1. Q: [Request to the model]
+    A: [Answer or report deduced using actual image description]
+
+  Rules:
+  - Never use the word 'description' or 'mention' in the answer, the model does not see the description of the image, it only sees the original image itself.
+  - Try not to give away too much information included in the image description in the question text. The model must learn to use the image to determine the answer, and not make educated guesses based on the question alone.
+  - Write nothing except the questions and answers.
+  - The model sees each questions separately so they will not be seen together. 
+
+  Tips:
+  - Example questions/statements might be "Describe the OCT image in detail." or "Can you give me a summary of the image?" or "Write a report on this image to be given to a retinal specialist.".
+  - Ask the model to explain why the AMD stage is not more advanced than it is (i.e. the absence of certain late stage biomarkers)
+  - Ask the model to explain why the AMD stage is more advanced than an earlier stage (i.e. the presence of certain late stage biomarkers)
+  - A few times, request verbose reports like "Write a report that starts by highlighting the most significant and salient biomarkers, and link these to the most probable disease stage. Conclude with a referral recommendation."
+# This OCT scan shows an area of RPE degeneration in the centre of the image with corresponding signal hypertransmission to the choroid. There is a smaller area of increased signal transmission nasally. There is a medium sized drusen in the far temporal aspect of the image. There is no intraretinal or subretinal fluid and there are no intraretinal hyperreflective foci.

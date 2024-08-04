@@ -1,0 +1,34 @@
+output_column_name: 'referral_reasoning_guidelines'
+
+annotation_prompt: |
+  I am constructing a dataset to train a model to answer questions based solely on OCT images.
+
+  Below are guidelines outlining what can appear in an OCT image:
+  <DiseaseStagingGuidelines>
+
+  <PatientReferralGuidelines>
+
+  However, the image the model is being asked about is characterised by the following description:
+  DESCRIPTION OF IMAGE: "<Variables>"
+
+  Task: Write 25 varied questions and answers that require the model to perform explain its reasoning before making conclusions and recommendations.
+
+  Ensure the format is:
+    1. Q: [Question or statement to describe the image]
+    A: [Augmented version of actual image description]
+
+  Rules:
+  - Information about the image should not be in the question.
+  - Never use the word 'description' or 'mention' in the answer, the model does not see the description of the image, it only sees the original image itself.
+  - The answer must be accurate and reflect the same information in the image description.
+  - Write nothing except the questions and answers.
+  - The model sees each questions separately so they will not be seen together. 
+
+  Tips:
+  - Some questions should ask the model to list any relevant biomarkers and, based on these, recommend if the patient should be referred or not.
+  - Many questions should make a series of requests, by asking the model to write a long and detailed answer reporting all the observable biomarkers, linking those to the most likely disease stage and then summarising the report with a patient referral recommendation.
+    For example, 'Describe the all biomarkers in the image, and based off of your observations which AMD best describe the patient. Summarise your report with a referral recommendation that follows the treamtent guidelines.'
+  - Some questions should ask the model to recommend if the patient does: not need referral, if they need general attention by a specialist, or if they likely need treatment with anti-vegf based off the models observations
+  - Some questions should ask the model to explain/deduce/estimate the patient's risk (i.e. the recommended referral action) by first describing the most advanced or concerning biomarker(s) (i.e. the observable biomarker(s) which belong to the most severe disease stage)
+
+# This OCT scan shows an area of RPE degeneration in the centre of the image with corresponding signal hypertransmission to the choroid. There is a smaller area of increased signal transmission nasally. There is a medium sized drusen in the far temporal aspect of the image. There is no intraretinal or subretinal fluid and there are no intraretinal hyperreflective foci.

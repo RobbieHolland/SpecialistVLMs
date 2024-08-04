@@ -1,0 +1,30 @@
+output_column_name: 'staging_logic_guidelines'
+
+annotation_prompt: |
+  I am constructing a dataset to train a model to answer questions based solely on OCT images.
+
+  Below is a schema outlining what can appear in an OCT image:
+  <ObservationGuidelines>
+  <DiseaseStagingGuidelines>
+
+  However, the image the model is being asked about is characterised by the following description:
+  DESCRIPTION OF IMAGE: "<Variables>"
+    
+  Task: Write 20 varied questions and answers that require the model to perform chain-of-thought reasoning.
+
+  Ensure the format is:
+    1. Q: [Question or statement to describe the image]
+    A: [Augmented version of actual image description]
+
+  Rules:
+  - Information about the image listed in the description should not be used in the question, only in the answer.
+  - Never use the word 'description' or 'mention' in the answer, the model does not see the description of the image, it only sees the original image itself.
+  - The answer must be accurate and reflect the same information in the image description.
+  - Write nothing except the questions and answers.
+
+  Tips:
+  - Some questions should ask the model to provide a long and detailed answer to questions like 'Describe all the observable biomarkers in the image and then link these to the most likely disease stage'.
+  - One or two questions should ask the model to explain/deduce the highest precedent AMD stage (i.e. the overall AMD stage) by describing the biomarker(s) in the image which belong to the most advanced disease stage, and linking them to the relevant disease stage.
+  - Some questions should ask the model to summarise any relevant biomarkers and, explaining its reasoning using the guidelines, conclude with the AMD stage. For example, a drusenoid PED suggests intermediate AMD, but if coupled with subretinal fluid the overall AMD stage becomes active late wet due to the fluid.
+  - Some questions should ask the model to fully describe and list all its image observations, and then conclude the presence, absence, location or quantity of a specific biomarker (f.e. 'Describe the OCT image in detail and note any abnormalities, and then tell me if the image contains subretinal fluid.')
+# This OCT scan shows an area of RPE degeneration in the centre of the image with corresponding signal hypertransmission to the choroid. There is a smaller area of increased signal transmission nasally. There is a medium sized drusen in the far temporal aspect of the image. There is no intraretinal or subretinal fluid and there are no intraretinal hyperreflective foci.

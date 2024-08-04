@@ -1,0 +1,22 @@
+annotation_prompt: |
+  I am constructing a dataset to train a model to answer questions based solely on OCT images. The model will access ONLY the image to deduce attributes. For context, the image in question has attributes as follows:
+  <Variables>
+  Based on these attributes, generate a numbered list of diverse questions and answers. Ensure the format is:
+  1. Q: [Question about an image attribute]
+  A: [Specific answer deduced from the image]
+  Rules:
+  - Questions should be crafted in a way that they don't explicitly state the attribute values, but the answers should be based on them. All attributes can be determined from the image.
+  - Incorporate both yes/no and open-ended styled questions, but always provide a definitive answer in the answer section.
+  - Occasionally touch on patient outcome/treatment.
+  
+batch_size: 7
+response_input: Null
+
+target: ['Sex', 'CurrentAge', 'VALogMAR', 'QualityIndex', 'AMDStageGroup', 'EyePosition', 'SilverBiomarkerTags']
+max_length: 750
+temperature: 0.2
+
+output_path: ${paths.qa_output_dir}
+
+total_workers: 3
+worker_id: Null

@@ -1,0 +1,43 @@
+output_column_name: 'staging_accuracy_guidelines'
+
+annotation_prompt: |
+  I am constructing a dataset to train a model to answer questions based solely on OCT images.
+
+  Below are guidelines outlining what can appear in an OCT image:
+  <DiseaseStagingGuidelines>
+
+  However, the image the model is being asked about is characterised by the following description:
+  DESCRIPTION OF IMAGE: "<Variables>"
+    
+  Task: Write 40 varied questions and answers that require the model to estimate the patient's disease stage from the image.
+
+  Ensure the format is enumerated:
+    1. Q: [Question or statement to describe the image]
+    A: [Augmented version of actual image description]
+
+  Rules that always apply:
+  - If the estimated disease stage is not provided in the report, do not write ANY questions and answers. Simply write "No disease stage in report".
+  - If reasoning for the disease stage is provided in the report, you MUST include this logic/nuance in the model's answers.
+  - You MUST not give away information about the image description in the question text. The model must learn to use the image to determine the answer, and not make educated guesses based on the question alone.
+  - The answer must be accurate and reflect the same information in the image description.
+  - The questions and answers must vary in their style, formulation and vocabulary.
+  - Write nothing except the questions and answers.
+
+  Rules that are specific to differentiating cases of active, vs inactive, late wet AMD:
+  - In cases with an active late wet diagnosis, you MUST make it clear that the PRESENCE OF FLUID is what differentiates active from inactive late wet AMD. Make this clear when explaining the reasoning behind active late wet diagnoses.
+    So do not imply that f.e. "The disease stage is late wet AMD (active), as indicated by the subretinal/intraretinal fluid, subretinal hyperreflective material, ...."
+    Instead, you MUST explain that f.e. "The overall disease stage is late wet AMD, which is active due to the detection/presence of subretinal/intraretinal fluid. Inactive late wet features include fibrovascular PED, ..."
+    Or "Late wet AMD best describes the AMD stage. The detection/presence of subretinal/intraretinal fluid means this is active late wet AMD. Other late wet features include fibrovascular PED, ..."
+  - Similarly, in cases with an inactive late wet diagnosis, you MUST make it clear in the model's reasoning that the lack of fluid, in combination with the other biomarkers, is what resulted in the inactive late wet diagnosis.
+    For example, "The stage is late wet AMD according to the evidence/presence of subretinal hyperreflective material, but it is inactive as there is no detectable fluid of any kind in the image"
+  - The exact formulation of this answer must vary according to the question. Do not copy the examples too many times. Add a lot of diversity in the model's responses.
+
+  Tips:
+  - Most questions should ask the model to first estimate the disease stage
+  - Some questions should first ask the model for its disease stage prediction, and then ask it to explain its reasoning by noting visible biomarkers that relate to that stage
+    For example, "Decide the most advanced AMD stage supported by the image, and explain your reasoning by noting any biomarkers most relevant to that stage."
+  - The explanation for the disease stage may already be given in the report, but you can also use the guidelines provided to work out which biomarkers resulted in that disease stage.
+  - Questions 31 to 40 questions should ask for the biomarkers and then the disease stage, such as "Describe any relevant/notable/significant biomarkers, and link them to the most likely disease stage" (which will be the one in the report)
+
+
+# This OCT scan shows an area of RPE degeneration in the centre of the image with corresponding signal hypertransmission to the choroid. There is a smaller area of increased signal transmission nasally. There is a medium sized drusen in the far temporal aspect of the image. There is no intraretinal or subretinal fluid and there are no intraretinal hyperreflective foci.

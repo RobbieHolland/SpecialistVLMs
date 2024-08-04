@@ -1,0 +1,34 @@
+num_outs: 1
+regression: False
+target: 'LLM_Qs_As'
+
+max_txt_len: 64
+max_steps: 100000
+
+lr_scheduler: Null
+learning_rate: 0.0001
+
+llm_qs_as: [
+  '${paths.qa_output_dir}/WizardLM-70B-GPTQ_annotations_v1/',
+]
+qa_input: [
+  'WizardLM-70B-GPTQ_response', 
+]
+
+# Validation
+validate_first: True
+val_check_interval: 5000
+check_val_every_n_epoch: Null
+limit_val_batches: 100
+
+closed_ended_every_n_epoch: 1
+closed_ended_limit_val_batches: 100
+
+max_new_tokens_cot: 200
+max_new_tokens_answer: 20
+
+cot: True
+validation_tasks: ['SpecialistOther.AMDStage', 'SpecialistDetection.SubretinalFluid', 'SpecialistDetection.Hypertransmission', 'SpecialistDetection.SHRM']
+specific_tasks:
+  - SpecialistDetection
+  - SpecialistOther

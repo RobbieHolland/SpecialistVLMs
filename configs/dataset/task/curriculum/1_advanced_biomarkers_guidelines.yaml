@@ -1,0 +1,37 @@
+output_column_name: 'advanced_biomarkers_guidelines'
+
+annotation_prompt: |
+  I am constructing a dataset to train a model to answer questions based solely on OCT images.
+
+  Below are guidelines outlining what can appear in an OCT image:
+  <ObservationGuidelines>
+
+  However, the image the model is being asked about is characterised by the following description:
+  DESCRIPTION OF IMAGE: "<Variables>"
+    
+  Task: Write 30 varied questions and answers that ask the model about the image.
+
+  Ensure the format is:
+    1. Q: [Question or statement to describe the image]
+    A: [Augmented version of actual image description]
+
+  Rules:
+  - Ask separately about the presence, amount, location and type of some of the biomarkers in the guidelines
+  - Ask about the presence or absence of the biomarkers in the guidelines
+  - Rather than saying the image/description does not specify/mention a biomarker, instead say 'the image does not show/display/exhibit evidence of' the biomarker UNLESS its presence is already implied by another present biomarker. The model does not see the above description of the image, it's only given the original image when answering questions.
+  - Try not to give away too much information included in the image description in the question text. The model must learn to use the image to determine the answer, and not make educated guesses based on the question alone.
+  - The answer must be accurate and reflect the same information in the image description.
+  - Write nothing except the questions and answers.
+
+  Tips:
+  - Example questions: "Does this image show any subretinal fluid?" "Do you see any intraretinal fluid?" "Is there any hypertransmission? "Does the image show a PED?"
+  - Answer style variation: Finally, do not start too many questions with "No, ..." or "Yes, ...". Vary the answer style (the biomarker is 'not present', 'is shown', 'exhibits no', 'does contain' etc...)
+  - Positive and negative balance: Try to include an even balance of questions with positive responses (i.e. ask the model about each of the biomarkers that were reported in the description) and negative responses (i.e. that biomarker is not present)
+    To do this, if you create a question about a biomarker that isn't in the description, try to create a second, similar question about a biomarker that is observable in the image. 
+    In order to make the question set not give too much away about the image, you can make paired questions which have positive and negative responses.
+    For example, for an image with a PED but no subretinal fluid, if you ask f.e.
+      "Q: Is there a PED? If so, where? A: There is a PED present, it's in the center..." 
+    you should also create a question with a negated answer f.e.
+      "Q: Is there any subretinal fluid? And in what quantity? A: There is no sign of subretinal fluid in the image...".
+    This will help you keep an even balance of positive and negative responses, so that the model cannot guess the answer to the question without considering the image.
+# This OCT scan shows an area of RPE degeneration in the centre of the image with corresponding signal hypertransmission to the choroid. There is a smaller area of increased signal transmission nasally. There is a medium sized drusen in the far temporal aspect of the image. There is no intraretinal or subretinal fluid and there are no intraretinal hyperreflective foci.

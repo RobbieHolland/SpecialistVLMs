@@ -1,0 +1,15 @@
+defaults:
+  - _self_
+  - curriculum: specialist_annotate_general
+
+batch_size: 1
+response_input: Null
+
+target: ['Annotation']
+max_length: 2000
+
+output_path: ${paths.qa_output_dir}
+version: 'Placeholder'
+
+total_workers: 1
+worker_id: annotate

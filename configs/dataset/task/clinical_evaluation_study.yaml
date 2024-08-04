@@ -1,0 +1,28 @@
+target: ['TabularAnnotated', 'ImageId', 'Annotation']
+
+llm_qs_as: []
+max_txt_len: 96
+
+n_images: 3
+
+all_questions:
+  without_guidelines:
+    - name: Brief report
+      query: |
+        Write a brief report describing the OCT image, noting any biomarkers or abnormalities, and link your observations to the most likely AMD stage for this patient.
+    - name: Staging report
+      query: |
+        Write a report describing the OCT image in great detail, including the most significant biomarker, and link your observations to the most likely AMD stage for this patient.
+
+  with_guidelines:
+    - name: Three schema report
+      query: |
+        The image observation and disease staging guidelines are as follows: 
+
+        Image observation guidelines:
+        <ObservationGuidelines>
+
+        Disease staging guidelines:
+        <DiseaseStagingGuidelines>
+
+        Write a report describing the OCT image in great detail, and link your observations to the most likely AMD stage.

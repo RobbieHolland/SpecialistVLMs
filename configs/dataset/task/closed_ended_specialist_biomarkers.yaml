@@ -1,0 +1,26 @@
+target: 'TabularAnnotated'
+
+closed_ended_limit_val_batches: Null
+max_txt_len: 144
+set: test
+
+llm_qs_as: []
+
+cot: True
+max_new_tokens_cot: 500
+max_new_tokens_answer: 300
+
+specific_tasks:
+  - SpecialistDetection
+
+validation_tasks:
+  - SpecialistDetection.RPEAtrophy
+  - SpecialistDetection.RPEElevation
+  - SpecialistDetection.PED
+  - SpecialistDetection.SubretinalFluid
+  - SpecialistDetection.Hypertransmission
+  - SpecialistDetection.IntraretinalFluid
+  - SpecialistDetection.Drusen
+  - SpecialistDetection.SHRM
+  - SpecialistDetection.HyperreflectiveFoci
+  - SpecialistDetection.DoubleLayerSign

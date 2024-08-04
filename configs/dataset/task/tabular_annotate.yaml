@@ -1,0 +1,11 @@
+defaults:
+  - _self_
+  - curriculum: tabular_annotate_rules
+
+batch_size: 7
+target: ['Sex', 'CurrentAge', 'VALogMAR', 'QualityIndex', 'AMDStageGroup', 'EyePosition', 'SilverBiomarkerTags']
+max_length: 750
+temperature: 0.2
+
+output_path: ${paths.qa_output_dir}
+version: Null

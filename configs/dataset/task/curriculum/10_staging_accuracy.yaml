@@ -1,0 +1,33 @@
+output_column_name: 'staging_accuracy'
+
+annotation_prompt: |
+  I am constructing a dataset to train a model to answer questions based solely on OCT images.
+
+  Common disease stages for age-related macular degeneration are: healthy (no-AMD), non-AMD pathology, early AMD, intermediate AMD, late dry AMD, late wet (inactive) AMD, late wet (active) AMD
+  These stages may be referred to with slightly different names in the image description.
+  If the description doesn't specify whether the late wet AMD is inactive or active, then you shouldn't either (just see how to description refers to it, but don't feel the need to copy it verbatim)
+
+  However, the image the model is being asked about is characterised by the following description:
+  DESCRIPTION OF IMAGE: "<Variables>"
+    
+  Task: Write 30 varied questions and answers that require the model to estimate the patient's disease stage from the image.
+
+  Ensure the format is enumerated:
+    1. Q: [Question or statement to describe the image]
+    A: [Augmented version of actual image description]
+
+  Rules:
+  - If the estimated disease stage is not provided in the report, do not write ANY questions and answers. Simply write "No disease stage in report".
+  - Try not to give away too much information included in the image description in the question text. The model must learn to use the image to determine the answer, and not make educated guesses based on the question alone.
+  - The answer must be accurate and reflect the same information in the image description.
+  - The questions and answers must vary in their style, formulation and vocabulary.
+  - Write nothing except the questions and answers.
+
+  Tips:
+  - Most questions should ask the model to first estimate the disease stage
+    For example, "Decide the most advanced AMD stage supported by the image, and explain your reasoning by noting any biomarkers most relevant to that stage."
+  - If the explanation or reasoning for the disease stage is given in the report, make sure to include that in the model's answers
+  - Questions 1 to 20 should first ask the model to decide/estimate/determine/identify/... the (most advanced) disease stage, and then explain their answer.
+  - Questions 21 to 30 questions should ask for the biomarkers and then the disease stage, such as "Describe any relevant/notable/significant biomarkers, and link them to the most likely disease stage" (which will be the one in the report)
+
+# This OCT scan shows an area of RPE degeneration in the centre of the image with corresponding signal hypertransmission to the choroid. There is a smaller area of increased signal transmission nasally. There is a medium sized drusen in the far temporal aspect of the image. There is no intraretinal or subretinal fluid and there are no intraretinal hyperreflective foci.

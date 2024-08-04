@@ -1,0 +1,13 @@
+num_outs: 1
+regression: False
+# target: ['Sex', 'CurrentAge', 'VALogMAR', 'QualityIndex', 'AMDStageGroup', 'EyePosition', 'SilverBiomarkerTags']
+target: ['ImageId']
+max_txt_len: 144
+
+max_steps: 50000
+val_check_interval: 250
+limit_val_batches: 75
+response_input: Null
+
+llm_qs_as: [
+]

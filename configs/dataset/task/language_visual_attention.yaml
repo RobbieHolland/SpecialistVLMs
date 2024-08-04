@@ -1,0 +1,66 @@
+target: ['TabularAnnotated', 'ImageId', 'Annotation']
+llm_qs_as: []
+max_txt_len: 96
+max_new_tokens: 400
+
+phrases:
+  - ' subretinal fluid'
+  - ' large subretinal fluid'
+  - ' intraretinal fluid'
+  - ' fluid'
+  - ' cyst'
+  - ' cysts'
+  - ' drusen'
+  - ' druse'
+  - ' PED'
+  - ' drusenoid PED'
+  - ' serous PED'
+  - ' no'
+  - ' signal'
+  - ' signal transmission'
+  - ' hypertransmission'
+  - ' cRORA'
+  - ' iRORA'
+  - ' RPE atrophy'
+  - ' RPE degeneration'
+  - ' atrophy'
+  - ' degeneration'
+  - ' degenerative'
+  - ' RPE'
+  - ' Shallow irregular RPE elevation'
+  - ' (SIRE)'
+  - ' hyperreflective'
+  - ' hyporeflective'
+  - ' subretinal hyperreflective material'
+  - ' SHRM'
+  - ' scar'
+  - ' scarring'
+  - ' fibrosis'
+  - ' fibrovascular PED'
+  - ' wet AMD'
+  - ' intermediate AMD'
+  - ' dry AMD'
+  - ' wet'
+  - ' active wet'
+  - ' active late wet'
+  - ' inactive late wet'
+  - ' inactive wet'
+  - ' intermediate'
+  - ' dry'
+  - ' signal hypertransmission'
+  - ' extensive druse'
+  - ' an area of RPE degeneration'
+  - ' large area of subretinal hyperreflective material (SHRM)'
+  - ' RPE elevation with a double-layer sign indicating fibrovascular PED'
+  - ' large area of subretinal fluid'
+  - ' fibrovascular PED with a large size'
+  - ' These biomarkers indicate active late wet AMD.'
+
+all_questions:
+  without_guidelines:
+    - name: enumerated_staging_report
+      query: |
+        I want you to:
+        1. Describe the OCT image and list any present biomarkers or other observations.
+        2. Decide which AMD stage from 'healthy', 'early', 'intermediate', 'late wet' or 'late dry' best describes the patient.
+        3. If the patient has late wet AMD, tell me if it is active or inactive

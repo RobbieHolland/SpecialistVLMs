@@ -1,0 +1,17 @@
+target: 'TabularAnnotated'
+
+closed_ended_limit_val_batches: Null
+max_txt_len: 144
+set: test
+
+llm_qs_as: []
+
+cot: True
+max_new_tokens_cot: 1200
+max_new_tokens_answer: 300
+
+specific_tasks:
+  - SpecialistOther
+
+validation_tasks:
+  - SpecialistOther.AMDStage

@@ -1,0 +1,22 @@
+output_column_name: 'specific_qa'
+
+annotation_prompt: |
+  I am constructing a dataset to train a model to answer questions based solely on OCT images.
+
+  The image in question is characterised by the following description:
+  DESCRIPTION OF IMAGE: "<Variables>"
+    
+  Task: Write 15 varied questions and answers that ask the model about the image. They should
+
+  Ensure the format is:
+    1. Q: [Question or statement to describe the image]
+    A: [Augmented version of actual image description]
+
+  Rules:
+  - Try not to give away too much information included in the image description in the question text. The model must learn to use the image to determine the answer, and not make educated guesses based on the question alone.
+  - The answer must be accurate and reflect the same information in the image description.
+  - Write nothing except the questions and answers.
+
+  Tips:
+  - Questions should be specific and ask about certain attributes, or sets of attributes. For example "Q: Is there any subretinal fluid in this image?".
+# This OCT scan shows an area of RPE degeneration in the centre of the image with corresponding signal hypertransmission to the choroid. There is a smaller area of increased signal transmission nasally. There is a medium sized drusen in the far temporal aspect of the image. There is no intraretinal or subretinal fluid and there are no intraretinal hyperreflective foci.

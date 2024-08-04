@@ -1,5 +1,6 @@
 outputs/
 configs/paths/paths.yaml
+configs/dataset/task/closed_ended_figures.yaml
 .vscode/
 open_clip/
 biomed-clip-share/
@@ -22,7 +23,7 @@ temp.py
 test.py
 evaluation/figures/
 evaluation/dataset/
-dataset/
+dataset/manual_annotations/
 .hydra/
 *.log
 logs/
@@ -31,7 +32,6 @@ logs/
 *.out
 slurm/env.sh
 *.ipynb
-dataset/process_manual_annotations.py
 evaluation/junior_specialist.py
 .nfs*
 .hydra/

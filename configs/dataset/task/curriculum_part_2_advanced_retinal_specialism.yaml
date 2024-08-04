@@ -1,0 +1,57 @@
+num_outs: 1
+regression: False
+target: 'LLM_Qs_As'
+# target: LLama2_Qs_As
+
+# Work out max text len (look at distribution of lengths) - All 99.5% was 85, full desc 99 was 101, 99.5 was 109, cot_schema 99.8 was 92, referral cot 99.8 was 88 → BS=112
+max_txt_len: 144
+
+max_steps: 40000
+
+lr_scheduler: Null
+learning_rate: 0.0001
+
+llm_qs_as: [
+  '${paths.qa_output_dir}/gpt-4o-2024-05-13_annotations_V4-specialist/advanced_biomarkers_guidelines_annotate.pkl',
+  '${paths.qa_output_dir}/gpt-4o-2024-05-13_annotations_V4-specialist/specific_qa_annotate.pkl',
+  '${paths.qa_output_dir}/gpt-4o-2024-05-13_annotations_V4-specialist/general_qa_annotate.pkl',
+  '${paths.qa_output_dir}/gpt-4o-2024-05-13_annotations_V4-specialist/staging_introduction_guidelines_annotate.pkl',
+  '${paths.qa_output_dir}/gpt-4o-2024-05-13_annotations_V4-specialist/staging_logic_guidelines_annotate.pkl',
+  '${paths.qa_output_dir}/gpt-4o-2024-05-13_annotations_V4-specialist/referral_reasoning_guidelines_annotate.pkl',
+  '${paths.qa_output_dir}/gpt-4o-2024-05-13_annotations_V4-specialist/report_writing_annotate.pkl',
+  '${paths.qa_output_dir}/gpt-4o-2024-05-13_annotations_V4-specialist/full_report_writing_guidelines_annotate.pkl',
+
+  '${paths.qa_output_dir}/gpt-4o-2024-05-13_annotations_V4_1-specialist/staging_accuracy_guidelines_annotate.pkl',
+  '${paths.qa_output_dir}/gpt-4o-2024-05-13_annotations_V4_1-specialist/staging_accuracy_annotate.pkl',
+]
+qa_input: [
+  'advanced_biomarkers_guidelines', 
+  'specific_qa', 
+  'general_qa',
+  'staging_introduction_guidelines',
+  'staging_logic_guidelines',
+  'referral_reasoning_guidelines',
+  'report_writing',
+  'full_report_writing_guidelines',
+
+  'staging_accuracy_guidelines',
+  'staging_accuracy',
+]
+
+# Validation
+validate_first: True
+val_check_interval: Null
+check_val_every_n_epoch: 20
+closed_ended_every_n_epoch: 25
+
+limit_val_batches: 100
+closed_ended_limit_val_batches: 100
+
+max_new_tokens_cot: 300
+max_new_tokens_answer: 20
+
+cot: True
+validation_tasks: ['SpecialistOther.AMDStage', 'SpecialistDetection.SubretinalFluid', 'SpecialistDetection.Hypertransmission', 'SpecialistDetection.SHRM']
+specific_tasks:
+  - SpecialistDetection
+  - SpecialistOther

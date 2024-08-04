@@ -1,0 +1,41 @@
+defaults:
+  - task: all
+
+oct_dataset: southampton_bm
+metadata: ${paths.retina_metadata_dir}
+
+image_dir: ${paths.retina_median_image_dir}
+
+extension: png
+
+text_dataset_weights:
+  TabularToPrompt: 1.0
+
+n_vision_tokens: 144
+
+image_scale: 1
+# Image augmentations
+rotate: 10
+flip: False
+crop_size: [416, 512]
+scale_size: Null
+zoom_size: Null
+# scale_size: [288, 356]
+# zoom_size: [256, 320]
+data_aug_shape: [384, 384]
+brightness: 0.3 # 0.05
+contrast: 0.4 # 0.05
+saturation: 0.0
+hue: 0.0
+gauss_noise_var_limit: 0.001
+contrastive: False
+gauss_blur: False
+
+number_train_labels: 99999999
+sort_by_date: False
+filter_: Null
+
+subset_sample: False
+preload_images: False
+
+representative_sample: False

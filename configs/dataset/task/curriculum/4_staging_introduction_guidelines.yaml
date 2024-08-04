@@ -1,0 +1,30 @@
+output_column_name: 'staging_introduction_guidelines'
+
+annotation_prompt: |
+  I am constructing a dataset to train a model to answer questions based solely on OCT images.
+
+  Below are guidelines outlining what can appear in an OCT image:
+  <ObservationGuidelines>
+  <DiseaseStagingGuidelines>
+
+  However, the image the model is being asked about is characterised by the following description:
+  DESCRIPTION OF IMAGE: "<Variables>"
+    
+  Task: Write 20 varied questions and answers that ask the model about the image.
+
+  Ensure the format is:
+    1. Q: [Question or statement to describe the image]
+    A: [Augmented version of actual image description]
+
+  Rules:
+  - Information about the image should not be in the question.
+  - The answer must be accurate and reflect the same information in the image description.
+  - Write nothing except the questions and answers.
+
+  Tips:
+  - Questions should be specific and ask about certain attributes, or sets of attributes. For example "Q: Is there any subretinal fluid in this image?" or "Q: Is the AMD stage intermediate, or is it more advanced?".
+  - Ask separately about the presence, amount, location and type of some of the biomarkers. Try to create an even balance of 'yes and 'no' answers.
+  - Rather than saying the image does not directly/explicitly specify/mention the presence of an attribute, instead say 'the image does not exhibit/show/display/evidence' the attribute, UNLESS its presence is already directly implied by the presence of another attribute. The model does not see the above description of the image, it's only given the original image when answering questions.
+  - Sometimes the desired output format should be specific in the question (f.e. Answer with 'yes' or 'no', or answer by stating if the image 'does' or 'does not' contain the biomarker in question.)
+
+# This OCT scan shows an area of RPE degeneration in the centre of the image with corresponding signal hypertransmission to the choroid. There is a smaller area of increased signal transmission nasally. There is a medium sized drusen in the far temporal aspect of the image. There is no intraretinal or subretinal fluid and there are no intraretinal hyperreflective foci.

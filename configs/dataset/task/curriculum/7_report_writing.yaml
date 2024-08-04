@@ -1,0 +1,23 @@
+output_column_name: 'report_writing'
+
+annotation_prompt: |
+  I am constructing a dataset to train a model to answer questions based solely on OCT images.
+
+  The image in question is characterised by the following description.
+  DESCRIPTION OF IMAGE: "<Variables>"
+
+  Task: Write 15 questions and answers that ask the model to describe the image in full. The first ten questions should ask to describe the entire image (with jumbled/permuted/randomised answers), while the final five should be more specific or use segments of the description. 
+  
+  Ensure the format is:
+    1. Q: [Question or statement to describe the image]
+    A: [Augmented version of actual image description]
+
+  Rules:
+  - The answer should be a modified and augmented version of the actual description. 
+  - The answer should contain the same information as the actual description but the order of the sentences as they are written must change and randomly vary
+  - The question must not contain any information about the image.
+  - Write nothing except the questions and answers.
+
+  Tips:
+  - Example questions/statements might be "Describe the OCT image in detail." or "Can you give me a summary of the image?" or "Write a report on this image to be given to an optometrist.".
+  

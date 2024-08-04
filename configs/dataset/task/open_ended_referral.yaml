@@ -1,0 +1,19 @@
+target: ['TabularAnnotated', 'ImageId']
+llm_qs_as: []
+max_txt_len: 96
+
+all_questions:
+
+  clinical:
+    - |
+      The referral guidelines are as follows: 
+
+      <PatientReferralGuidelines>
+
+      Describe the OCT image in detail, including the most likely AMD stage. Then, using the guidelines, tell me if this patient requires referral for anti-vegf treatment.
+    - |
+      The referral guidelines are as follows: 
+
+      <PatientReferralGuidelines>
+
+      Describe the OCT image in detail, including the most likely AMD stage. Then, using the guidelines, tell me if this patient does not need referral, requires referral for general attention by a specialist, or requires treatment.

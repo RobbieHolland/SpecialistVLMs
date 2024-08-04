@@ -1,0 +1,17 @@
+target: ['TabularAnnotated', 'ImageId']
+
+closed_ended_limit_val_batches: Null
+max_txt_len: 144
+set: validation
+
+max_new_tokens_cot: 1200
+max_new_tokens_answer: 300
+
+llm_qs_as: []
+
+cot: True
+specific_tasks:
+  - SpecialistReferral
+
+validation_tasks:
+  - SpecialistReferral.SouthamptonReferral
