@@ -15,6 +15,7 @@ wandb/
 *.png
 *.csv
 *.txt
+!requirements.txt
 evaluation/results/*
 evaluation/test_bed/
 run/test_bed.py

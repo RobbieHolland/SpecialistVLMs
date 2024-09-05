@@ -16,20 +16,6 @@ from pytorch_grad_cam.utils.model_targets import ClassifierOutputTarget
 from tqdm import tqdm
 from clinical_capabilities.clinical_capabilities_util import add_schema
 
-class SpatialArrange(nn.Module):
-    def __init__(self):
-        super(SpatialArrange, self).__init__()
-
-    def forward(self, x):
-        # Slicing
-        x = x[:, 1:, :]
-        # Reshaping
-        x = x.reshape(-1, 1024, 14, 14)
-        # Transposing from [batch_size, channels, height, width] to [batch_size, height, width, channels]
-        # for hypothetical processing reasons or to match a specific data format requirement
-        x = x.permute(0, 2, 3, 1)
-        return x
-
 def plot_and_save_image(ax, masked_image, mask_1, mask_2, title, save_path=None):
     ax.imshow(masked_image, cmap='gray', vmin=np.percentile(masked_image, 0.5), vmax=np.percentile(masked_image, 99.5))
     ax.contour(np.where(mask_2 >= 0.85, 1, 0), colors='red', linewidths=1.5)

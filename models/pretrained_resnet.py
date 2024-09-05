@@ -12,16 +12,21 @@ class PretrainedResNet(pl.LightningModule):
     def __init__(self, config):
         super(PretrainedResNet, self).__init__()
 
-        checkpoint = os.path.join(config.pretrained_model_dir, config.model.vision_encoder.checkpoint)
-
-        sd = torch.load(checkpoint)['state_dict']
-        sd = {k.split('encoder.')[-1]: v for (k, v) in sd.items() if 'encoder' in k and 'tail' not in k}
         if 'blocks' not in config.model.vision_encoder.keys():
             blocks = None
         else:
             blocks = config.model.vision_encoder.blocks
         encoder = ssl_backbone(channels_in=1, blocks=blocks)
-        encoder.load_state_dict(sd, strict=True)
+
+        if config.model.vision_encoder.checkpoint is not None:
+            checkpoint = os.path.join(config.pretrained_model_dir, config.model.vision_encoder.checkpoint)
+
+            sd = torch.load(checkpoint)['state_dict']
+            sd = {k.split('encoder.')[-1]: v for (k, v) in sd.items() if 'encoder' in k and 'tail' not in k}
+
+            encoder.load_state_dict(sd, strict=True)
+        else:
+            print('Creating blank encoder for later weight loading.')
 
         self.model = encoder.eval()
         self.feature_tokens_model = torch.nn.Sequential(*list(self.model.children())[:-1])

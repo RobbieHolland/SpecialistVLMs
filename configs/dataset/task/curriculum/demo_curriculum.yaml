@@ -1,0 +1,17 @@
+output_column_name: 'demo'
+
+annotation_prompt: |
+  I am constructing a dataset to train a model to answer questions.
+
+  The image the model is being asked about is characterised by the following description:
+  DESCRIPTION OF IMAGE: "<Variables>"
+    
+  Task: Write 30 varied questions and answers that ask the model about the image.
+
+  Ensure the format is:
+    1. Q: [Question or statement to describe the image]
+    A: [Augmented version of actual image description]
+
+  Rules:
+  - Ask an even number of questions with yes and no answers
+  - Include some questions that require longer, open-ended answers

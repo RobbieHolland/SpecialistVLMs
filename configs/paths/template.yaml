@@ -17,6 +17,7 @@ openai_api_key:
 pretrained_model_dir: 
 flamingo_repo_dir: 
 llava_med_repo_dir: 
+llava_med_model_path: 
 retfound_repo_dir: 
 flamingo_llama_path: 
 octlatent_repo_dir: 
@@ -35,3 +36,5 @@ qa_output_dir:
 
 senior_ophthalmologist_evaluations: 
 manual_predictions_path: 
+
+hf_write_token: 

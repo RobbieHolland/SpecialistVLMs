@@ -69,6 +69,8 @@ class RetinaVLM(PreTrainedModel):
 
     def forward(self, images, queries, max_new_tokens=750):
         answer_preambles = [''] * len(images)
+        if len(images.shape) == 2:
+            images = [images]
         images = [self.convert_any_image_to_normalized_tensor(image) for image in images]
         images = torch.stack(images, dim=0).to(self.model.device)
         outputs, samples = self.model.query(images, queries, answer_preamble=answer_preambles, max_new_tokens=max_new_tokens, output_only=True, return_samples=True)
@@ -81,11 +83,19 @@ def load_retinavlm(config):
     model = RetinaVLM.from_pretrained("saved_models/RetinaVLM-Specialist", config=rvlm_config).eval()
     return model
 
+# def load_retinavlm_specialist_from_hf(config):
+#     rvlm_config = RetinaVLMConfig.from_pretrained("RobbieHolland/RetinaVLM/RetinaVLM-Specialist")
+#     rvlm_config.update(config)
+#     rvlm_config.model.checkpoint_path = None
+#     model = RetinaVLM.from_pretrained("RobbieHolland/RetinaVLM/RetinaVLM-Specialist", config=rvlm_config).eval()
+#     return model
+
 def load_retinavlm_specialist_from_hf(config):
-    rvlm_config = RetinaVLMConfig.from_pretrained("RobbieHolland/RetinaVLM/RetinaVLM-Specialist")
+    rvlm_config = RetinaVLMConfig.from_pretrained("RobbieHolland/RetinaVLM", subfolder="RetinaVLM-Specialist")
+
     rvlm_config.update(config)
     rvlm_config.model.checkpoint_path = None
-    model = RetinaVLM.from_pretrained("RobbieHolland/RetinaVLM/RetinaVLM-Specialist", config=rvlm_config).eval()
+    model = RetinaVLM.from_pretrained("RobbieHolland/RetinaVLM", subfolder="RetinaVLM-Specialist", config=rvlm_config).eval()
     return model
 
 @hydra.main(version_base=None, config_path="../configs", config_name="default")
@@ -129,13 +139,15 @@ def save_model(config):
 @hydra.main(version_base=None, config_path="../configs", config_name="default")
 def test_load(config):
     model = load_retinavlm(config)
+    return model
 
 @hydra.main(version_base=None, config_path="../configs", config_name="default")
 def load_from_api(config):
     model = load_retinavlm_specialist_from_hf(config)
+    return model
 
 if __name__ == "__main__":
     # save_model()
     # test_load()
-    # debug()
-    load_from_api()
+    debug()
+    # load_from_api()
