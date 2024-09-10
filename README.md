@@ -49,11 +49,13 @@ Evaluating RetinaVLM on closed-ended tasks `closed_ended_specialist_staging`, `c
 
 **Demo** To run RetinaVLM:
 
-1. Install the set of packages listed in `requirements.txt`
+1. Install the reduced set of packages listed in `demos/demo_requirements.txt`
 
 2. Save images to `dataset/processed_images`
 
-3. Run `run/demos/inference.py paths=template`, which will download and run the [HuggingFace](https://huggingface.co/RobbieHolland/RetinaVLM) model, and evaluate it on your images and custom textual queries and instructions by running
+3. Request access to [Meta's Llama 3 model](https://huggingface.co/meta-llama/Meta-Llama-3-8B). Then, log into your HuggingFace account using `huggingface-cli login` by providing a READ token(generated in settings).
+
+4. Run `run/demos/inference.py paths=template`, which will download and run the [HuggingFace](https://huggingface.co/RobbieHolland/RetinaVLM) model, and evaluate it on your images and custom textual queries and instructions by running
 
 ## Generating visual-language saliency maps
 

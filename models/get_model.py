@@ -1,4 +1,3 @@
-from models.biomedclip import BiomedCLIP
 from models.retfound import RETFound
 from models.pretrained_resnet import PretrainedResNet
 from models.wizardlm import load_wizardlm
@@ -9,7 +8,6 @@ import wandb
 from types import SimpleNamespace
 
 vision_models = {
-    'biomedclip': lambda config: BiomedCLIP(config),
     'pretrained_resnet': lambda config: PretrainedResNet(config),
     'retfound': lambda config: RETFound(config)
 }

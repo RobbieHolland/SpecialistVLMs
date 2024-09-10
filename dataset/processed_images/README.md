@@ -1,0 +1,3 @@
+Add images to this folder for the inference demo.
+
+The models provided on HuggingFace were developed for research purposes, and are not intended or applicable for immediate clinical use. They are prototype models that were solely developed to evidence the potential of our needs-driven and expert-led blueprint for training medical VLMs. The performance reported in the paper was for Topcon OCT mediolateral 2D image slices with 7.0×23.4 μm pixel dimensions, extracted at the fovea. We have not yet evaluated or guaranteed any level of performance on other formats, though preliminary results on other image resolutions are promising.

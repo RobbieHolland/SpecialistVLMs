@@ -12,14 +12,10 @@ from models.get_model import get_run_config
 import pandas as pd
 import types
 import omegaconf
-from run.closed_ended_figures import aggregate_predictions, aggregate_f1
 # import torch.multiprocessing
 # torch.multiprocessing.set_start_method('spawn', force=True)
 import os
 os.environ["TOKENIZERS_PARALLELISM"] = "0"
-
-import dill
-torch.multiprocessing.get_context().set_forkserver_preload(['dill'])
 
 from pytorch_lightning import Trainer
 
@@ -131,6 +127,8 @@ class MiniGPT4Module(TrainableSave):
         self.loss_metrics['val'].to(self.model.llm.device).reset()
 
         if (self.closed_ended_evaluator is not None) and (self.validation_epochs % self.config.dataset.task.closed_ended_every_n_epoch == 0):
+            from run.closed_ended_figures import aggregate_predictions, aggregate_f1
+
             closed_ended_results = self.closed_ended_evaluator.run_tasks(self.model)
             results = pd.DataFrame(closed_ended_results)
             results['model_display_name'] = 'Training now'
@@ -177,6 +175,9 @@ def load_pretrained_vlm(config):
 
 @hydra.main(version_base=None, config_path="../configs", config_name="default")
 def train(config):
+    import dill
+    torch.multiprocessing.get_context().set_forkserver_preload(['dill'])
+
     wandb.init(project=config.wandb_project, config=dict(config), mode=config.wandb_mode, settings=wandb.Settings(_service_wait=300))
     sys.path.append(config['octlatent_dir'])
     # Split my module across 4 gpus, one layer each

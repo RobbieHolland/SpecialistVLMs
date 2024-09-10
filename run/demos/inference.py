@@ -1,11 +1,13 @@
-
 import hydra
 from PIL import Image
 import numpy as np
 import textwrap
-from models.retinavlm_wrapper import load_from_api
 from glob import glob
 import os
+import sys
+
+sys.path.append(os.getcwd())
+from models.retinavlm_wrapper import load_from_api
 
 @hydra.main(version_base=None, config_path="../../configs", config_name="default")
 def demo_inference(config):

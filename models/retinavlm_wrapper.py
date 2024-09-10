@@ -1,8 +1,6 @@
 from run.vision_language_pretraining import MiniGPT4Module
 import hydra
 import torch
-import torch.nn as nn
-from dataset.retinal_text_dataset import RetinalTextDataset
 import sys
 from PIL import Image
 import numpy as np
@@ -100,6 +98,8 @@ def load_retinavlm_specialist_from_hf(config):
 
 @hydra.main(version_base=None, config_path="../configs", config_name="default")
 def debug(config):
+    from dataset.retinal_text_dataset import RetinalTextDataset
+
     sys.path.append(config['octlatent_dir'])
     dataset = RetinalTextDataset(config, set_='validation')
     sample = dataset.__getitem__(2)
