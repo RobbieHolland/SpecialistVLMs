@@ -82,7 +82,7 @@ class MiniGPT4Module(TrainableSave):
             self.load_from_checkpoint_file()
         else:
             self.model = MiniGPT4(config, device=device)
-            print('Using an entirely new MiniGPT4 adapter.')
+            print('Creating an entirely new MiniGPT4 adapter (this will be overwritten by pretrained model if loaded from API)')
 
         self.loss_metrics = {
             'train': torchmetrics.MeanMetric(),
