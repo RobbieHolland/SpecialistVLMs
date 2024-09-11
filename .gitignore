@@ -16,6 +16,7 @@ wandb/
 *.csv
 *.txt
 !requirements.txt
+!run/demos/demo_requirements.txt
 evaluation/results/*
 evaluation/test_bed/
 run/test_bed.py
