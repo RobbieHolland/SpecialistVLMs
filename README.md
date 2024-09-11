@@ -56,7 +56,8 @@ Evaluating RetinaVLM on closed-ended tasks `closed_ended_specialist_staging`, `c
 3. Request access to [Meta's Llama 3 model](https://huggingface.co/meta-llama/Meta-Llama-3-8B). Then, log into your HuggingFace account using `huggingface-cli login` by providing a READ token (generated in settings).
 
 4.  Run `run/demos/inference.py paths=template`, which will download and run the [HuggingFace](https://huggingface.co/RobbieHolland/RetinaVLM) model (requires GPU for quantization).
-    It will then evaluate it on your images and custom textual queries and instructions
+
+    The script will then evaluate custom textual queries and instructions on your provided images.
 
 ## Generating visual-language saliency maps
 
