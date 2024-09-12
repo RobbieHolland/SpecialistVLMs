@@ -1,5 +1,5 @@
 import pytorch_lightning as pl
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig
 import torch
 import transformers
 import hydra
@@ -29,13 +29,23 @@ class Llama3(pl.LightningModule):
 
         self.tokenizer = self.create_tokenizer()
 
-        self.model = AutoModelForCausalLM.from_pretrained(
-            config.model.language_model.model_id,
-            torch_dtype=torch.float16,
-            load_in_8bit=config.model.language_model.load_in_8bit,
-            # device_map={'': device_8bit},
-            cache_dir=config.pretrained_model_dir,
-        )
+        if self.config.model.language_model.initialize:
+            self.model = AutoModelForCausalLM.from_pretrained(
+                config.model.language_model.model_id,
+                torch_dtype=torch.float16,
+                load_in_8bit=config.model.language_model.load_in_8bit,
+                # device_map={'': device_8bit},
+                cache_dir=config.pretrained_model_dir,
+            )
+        else:
+            config_model = AutoConfig.from_pretrained(
+                config.model.language_model.model_id,  # Model ID for config
+                cache_dir=config.pretrained_model_dir,
+            )
+            self.model = AutoModelForCausalLM.from_config(
+                config_model,
+                torch_dtype=torch.float16
+            )
 
         self.stop_words = ["<|eot_id|>"]
         self.stop_words_ids = [torch.Tensor(self.tokenizer.encode(self.tokenizer.eos_token, add_special_tokens=False)).to(self.model.device), torch.Tensor(self.tokenizer.encode("<|eot_id|>", add_special_tokens=False)).to(self.model.device)]

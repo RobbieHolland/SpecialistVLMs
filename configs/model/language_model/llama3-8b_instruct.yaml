@@ -2,6 +2,7 @@ hidden_dim: 4096
 path: ${paths.llama3_path}
 model_id: meta-llama/Meta-Llama-3-8B-Instruct
 load_in_8bit: True
+initialize: True
 
 prompt:
   preamble: "A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions."
