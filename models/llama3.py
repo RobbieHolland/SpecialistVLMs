@@ -5,6 +5,7 @@ import transformers
 import hydra
 import warnings
 from models.util import set_llama3_pad_token
+import warnings
 
 from transformers import StoppingCriteria, StoppingCriteriaList
 
@@ -38,13 +39,14 @@ class Llama3(pl.LightningModule):
                 cache_dir=config.pretrained_model_dir,
             )
         else:
+            warnings.warn('Loading 8-bit quantized models from HuggingFace can lead to errors when loading LLama3 from_config instead of from_pretrained.')
             config_model = AutoConfig.from_pretrained(
                 config.model.language_model.model_id,  # Model ID for config
                 cache_dir=config.pretrained_model_dir,
             )
             self.model = AutoModelForCausalLM.from_config(
                 config_model,
-                torch_dtype=torch.float16
+                torch_dtype=torch.float16,
             )
 
         self.stop_words = ["<|eot_id|>"]

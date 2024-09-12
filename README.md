@@ -47,7 +47,7 @@ Evaluating RetinaVLM on closed-ended tasks `closed_ended_specialist_staging`, `c
 
 **Disclaimer** The models provided on [HuggingFace](https://huggingface.co/RobbieHolland/RetinaVLM) were developed for research purposes, and are not intended or applicable for immediate clinical use. They are prototype models that were solely developed to evidence the potential of our needs-driven and expert-led blueprint for training medical VLMs. The performance reported in the paper was for Topcon OCT mediolateral 2D image slices with 7.0×23.4 μm pixel dimensions, extracted at the fovea.
 
-**Demo** To run RetinaVLM:
+**Demo** To run RetinaVLM (as in the [colab demo](https://colab.research.google.com/drive/1IQu9JjAe23u8TFYnrEEWtuE13nZ_hf1L?usp=sharing)):
 
 1. Install the reduced set of packages listed in `run/demos/demo_requirements.txt`
 
@@ -55,7 +55,7 @@ Evaluating RetinaVLM on closed-ended tasks `closed_ended_specialist_staging`, `c
 
 3. Request access to [Meta's Llama 3 model](https://huggingface.co/meta-llama/Meta-Llama-3-8B). Then, log into your HuggingFace account using `huggingface-cli login` by providing a READ token (generated in settings).
 
-4.  Run `run/demos/inference.py paths=template`, which will download and run the [HuggingFace](https://huggingface.co/RobbieHolland/RetinaVLM) model (requires GPU for quantization).
+4.  Run `run/demos/inference.py paths=template`, which will download and run the [HuggingFace model](https://huggingface.co/RobbieHolland/RetinaVLM) (requires GPU for quantization).
 
     The script will then evaluate custom textual queries and instructions on your provided images.
 
